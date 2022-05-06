@@ -1,1 +1,38 @@
+# Randon LeetCode Problems
+1. [Coin-Change](https://leetcode.com/problems/coin-change/)
+- [ ] in progress
+```
+def coinreturn(coins,rem):
+    sum=0
+    if(rem!=0):
+        for i in coins:
+            if(i<rem):
+                sum=sum+(rem//i)
+                if(coinreturn(coins,(rem%i))==-1):
+                    sum=-1
+                else:
+                    sum=sum+coinreturn(coins,(rem%i))
+                break
+            elif(i==rem):
+                sum=1
+                break
+            elif(i>rem):
+                sum=-1
+                continue
+    else:
+        sum=-1    
+    return sum
+
+coin=[1]
+amount=2
+coin.sort(reverse=True)
+if(amount==0):
+    print(0)
+elif(amount%coin[0]==0):
+    print(amount//coin[0])
+else:
+    print(coinreturn(coin,amount))
+```
+>Status: Not Completed 36/188 testcases passed 6/5/22
+>need to change algorithm
 
